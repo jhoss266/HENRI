@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti, Papá 💛 | Feliz Cumpleaños</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dorado: #ffd700;
+            --dorado-suave: #ffed9e;
+            --fondo-oscuro: #0f172a;
+            --fondo-medio: #1e293b;
+            --texto-claro: #f8fafc;
+            --texto-suave: #cbd5e1;
+            --acento: #f59e0b;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, var(--fondo-oscuro) 0%, var(--fondo-medio) 60%, #1a1a3e 100%);
+            color: var(--texto-claro);
+            text-align: center;
+            padding: 60px 24px;
+            line-height: 1.8;
+        }
+
+        .contenedor {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .cabecera {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            color: var(--dorado);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
+            letter-spacing: 1px;
+        }
+
+        .subtitulo {
+            font-size: 1.1rem;
+            color: var(--texto-suave);
+            font-weight: 300;
+        }
+
+        .corazon-principal {
+            font-size: 5rem;
+            margin: 20px 0 30px;
+            animation: latido 1.4s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(255, 50, 50, 0.4));
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+            100% { transform: scale(1); }
+        }
+
+        .mensaje {
+            font-size: 1.15rem;
+            color: var(--texto-claro);
+            margin-bottom: 24px;
+            padding: 0 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.9s ease-out;
+        }
+
+        .mensaje.aparece {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mensaje em {
+            font-style: normal;
+            color: var(--dorado);
+            font-weight: 600;
+        }
+
+        .frase-destacada {
+            margin: 45px 0;
+            padding: 28px 24px;
+            border: 2px solid var(--dorado);
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(245, 158, 11, 0.06));
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+        }
+
+        .frase-destacada p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--dorado);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .contenedor-boton {
+            margin: 40px 0;
+        }
+
+        .boton-musica {
+            font-family: 'Poppins', sans-serif;
+            padding: 16px 42px;
+            background: linear-gradient(90deg, var(--acento), var(--dorado));
+            color: #1e1b00;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.25);
+        }
+
+        .boton-musica:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .boton-musica.activo {
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+        }
+
+        .boton-musica.activo:hover {
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
+        }
+
+        .divisor {
+            width: 60%;
+            height: 2px;
+            margin: 45px auto;
+            background: linear-gradient(90deg, transparent, var(--dorado), transparent);
+            border: none;
+        }
+
+        .fecha {
+            font-size: 0.95rem;
+            color: var(--texto-suave);
+            margin-bottom: 30px;
+        }
+
+        .firma {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7rem;
+            color: var(--dorado);
+            margin-bottom: 40px;
+        }
+
+        .foto-contenedor {
+            margin-top: 10px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .foto-papa {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .corazon-flotante {
+            position: fixed;
+            font-size: 26px;
+            pointer-events: none;
+            z-index: 99;
+            animation: subir 4s ease-out forwards;
+        }
+
+        @keyframes subir {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .pie-pagina {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="contenedor">
+        <header class="cabecera">
+            <h1>¡Feliz Cumpleaños, Papá!</h1>
+            <p class="subtitulo">Un regalo hecho con todo mi amor 💛</p>
+        </header>
+
+        <div class="corazon-principal">❤️</div>
+
+        <section class="mensajes">
+            <p class="mensaje" id="m1">
+                Hoy es tu día, y aunque estés lejos, quiero que sientas lo mucho que te quiero. 🎉
+            </p>
+
+            <p class="mensaje" id="m2">
+                Sé que estás allá, en otro país, y que a veces puede sentirse solitario. Pero quiero que recuerdes algo muy importante: <em>nunca estás solo.</em> 💛
+            </p>
+
+            <p class="mensaje" id="m3">
+                Te llevo en mi corazón cada día, cada hora, en cada pensamiento. La distancia separa cuerpos, pero no corazones. 🫂
+            </p>
+
+            <div class="frase-destacada">
+                <p>Siempre juntos, aunque estés lejos ❤️</p>
+            </div>
+
+            <p class="mensaje" id="m4">
+                Gracias por todo lo que haces por nosotros. Por tu esfuerzo, tu valentía y por dar lo mejor de ti siempre. Eres mi ejemplo y mi orgullo. ✨
+            </p>
+
+            <p class="mensaje" id="m5">
+                Te extraño cada día y te espero con todo mi amor. Que este nuevo año de vida te traiga salud, alegría y pronto nos volveremos a abrazar. 💙
+            </p>
+        </section>
+
+        <div class="contenedor-boton">
+            <button class="boton-musica" id="botonMusica">
+                🎵 Toca para escuchar la música
+            </button>
+        </div>
+
+        <hr class="divisor">
+
+        <p class="fecha">🎈 30 de septiembre — Tu día especial 🎈</p>
+
+        <p class="firma">
+            — Tu hijo 💛
+        </p>
+
+        <div class="foto-contenedor">
+            <img src="foto_papa.jpg" alt="Con mi papá, siempre en mi corazón 💛" class="foto-papa">
+        </div>
+
+        <p class="pie-pagina">
+            Hecho con amor, para la persona más importante 💛
+        </p>
+    </main>
+
+    <audio id="musica" loop preload="metadata">
+        <source src="papa_musica.mp3" type="audio/mpeg">
+        Tu navegador no admite la reproducción de audio.
+    
+
+    <script>
+        const botonMusica = document.getElementById('botonMusica');
+        const musica = document.getElementById('musica');
+        let estaSonando = false;
+
+        // Aparecer mensajes con elegancia
+        window.addEventListener('load', () => {
+            const mensajes = document.querySelectorAll('.mensaje');
+            mensajes.forEach((msg, indice) => {
+                setTimeout(() => {
+                    msg.classList.add('aparece');
+                }, 700 * (indice + 1));
+            });
+        });
+
+        // Control de música con estado visual
+        botonMusica.addEventListener('click', async () => {
+            if (!estaSonando) {
+                try {
+                    await musica.play();
+                    estaSonando = true;
+                    botonMusica.innerText = '🎵 Suena para ti 💛';
+                    botonMusica.classList.add('activo');
+                    soltarCorazones();
+                } catch (error) {
+                    alert('Por favor, toca otra vez para iniciar la música 🎵');
+                }
+            } else {
+                musica.pause();
+                estaSonando = false;
+                botonMusica.innerText = '🎵 Toca para escuchar la música';
+                botonMusica.classList.remove('activo');
+            }
+        });
+
+        // Corazones que vuelan al iniciar la música
+        function soltarCorazones() {
+            const corazones = ['❤️', '💛', '🧡', '💖', '✨', '🎂', '🎈', '🫂'];
+            for (let i = 0; i < 24; i++) {
+                setTimeout(() => {
+                    const corazon = document.createElement('div');
+                    corazon.className = 'corazon-flotante';
+                    corazon.innerText = corazones[Math.floor(Math.random() * corazones.length)];
+                    corazon.style.left = `${Math.random() * 100}%`;
+                    corazon.style.top = `${Math.random() * 80 + 10}%`;
+                    document.body.appendChild(corazon);
+                    setTimeout(() => corazon.remove(), 4000);
+                }, i * 80);
+            }
+        }
+    </script>
+
+</body>
+</html>
